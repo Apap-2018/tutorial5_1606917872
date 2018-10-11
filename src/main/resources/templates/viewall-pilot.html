@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>View Pilot</title>
+		<object th:include="fragment/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragment/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+	<nav th:replace="fragment/fragmentViewAllPilot :: navbar"></nav>
+	<div class="container-fluid">
+	<br>
+	<h2>Daftar Semua Pilot</h2>
+	<form>
+			<table border = "1">
+				<thead>
+					<tr>
+						<th style ="text-align: center">No.</th>
+						<th style ="text-align: center">License Number</th>
+						<th style ="text-align: center">Name</th>
+						<th style ="text-align: center">FlyHour</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pilot,iterationStatus : ${listPilot}">
+						<td th:text="${iterationStatus.count}"></td>
+						<td th:text="${pilot.licenseNumber}"></td>
+						<td th:text="${pilot.name}"></td>
+						<td th:text="${pilot.flyHour}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		</div>
+	</body>
+</html>

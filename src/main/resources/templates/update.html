@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<title>View Pilot</title>
+</head>
+	
+<body>
+	<h3 th:text="'Pilot License Number : ' + ${pilot.licenseNumber}" />
+	<h3 th:text="'Name : ' + ${pilot.name}" />
+	<h3 th:text="'Fly Hour : ' + ${pilot.flyHour}" />
+	<br>
+	<h3>Update data</h3>
+	
+	<form th:action="@{/pilot/update}" th:objects="${pilot}" method="POST">
+		<input type="hidden" th:field="${pilot.licenseNumber}" />
+		Nama: <br>
+		<input type="text" name="name" required=/>
+		<br>
+		Fly Hour: <br>
+		<input type="number" name="flyHour" required/>
+		<br>
+		<br><br>
+		<button type="submit">Submit</button>
+	</form>
+	
+</body>
+
+
+	
+</html>

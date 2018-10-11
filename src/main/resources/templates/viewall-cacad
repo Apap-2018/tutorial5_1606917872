@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>View Pilot</title>
+		<object th:include="fragment/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragment/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+	<nav th:replace="fragment/fragmentViewAllPilot :: navbar"></nav>
+	<div class="container-fluid">
+	<form th:action="@{/pilot/delete}" th:object="${pilot}" method="POST">
+			<table border = "1">
+				<caption>Daftar Pilot</caption>
+				<thead>
+					<tr>
+						<th style ="text-align: center">No.</th>
+						<th style ="text-align: center">License Number</th>
+						<th style ="text-align: center">Name</th>
+						<th style ="text-align: center">FlyHour</th>
+						<th style ="text-align: center">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pilot,iterationStatus : ${listPilot}">
+						<td th:text="${iterationStatus.count}"></td>
+						<td th:text="${pilot.licenseNumber}"></td>
+						<td th:text="${pilot.name}"></td>
+						<td th:text="${pilot.flyHour}"></td>
+						<td>
+							<input type="submit" th:field="*{listPilot}" th:value="${pilot.licenseNumber}" />
+							<label th:for="${#ids.prev('listPilot')}">Hapus</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit">Delete Selected Flight</button>
+		</form>
+		</div>
+	</body>
+</html>
