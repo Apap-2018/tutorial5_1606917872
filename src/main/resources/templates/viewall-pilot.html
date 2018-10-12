@@ -10,7 +10,7 @@
 	<div class="container-fluid">
 	<br>
 	<h2>Daftar Semua Pilot</h2>
-	<form>
+	<form th:action="@{/pilot/delete}" th:object="${pilot}" method="POST">
 			<table border = "1">
 				<thead>
 					<tr>
@@ -18,6 +18,7 @@
 						<th style ="text-align: center">License Number</th>
 						<th style ="text-align: center">Name</th>
 						<th style ="text-align: center">FlyHour</th>
+						<th style ="text-align: center">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,6 +27,9 @@
 						<td th:text="${pilot.licenseNumber}"></td>
 						<td th:text="${pilot.name}"></td>
 						<td th:text="${pilot.flyHour}"></td>
+						<td>
+							<button type="submit" th:value="${pilot.licenseNumber}">Hapus</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>

@@ -14,20 +14,34 @@
 		
 	<h3>Tambah Penerbangan</h3>
 	<form th:action="@{/flight/add}" th:objects="${flight}" method="POST">
-		<input type="hidden" th:field="*{flight.pilot}" />
-		Flight Number: <br>
-		<input type="text" name="flightNumber" />
-		<br>
-		Origin: <br>
-		<input type="text" name="origin" />
-		<br>
-		Destination: <br>
-		<input type="text" name="destination" />
-		<br>
-		Time: <br>
-		<input type="date" name="time" />
-		<br><br>
-		<button type="submit">Submit</button>
+		<table border = "1">
+				<caption>Flights</caption>
+				<thead>
+					<tr>
+						<th style ="text-align: center">Flight Number</th>
+						<th style ="text-align: center">Origin</th>
+						<th style ="text-align: center">Destination</th>
+						<th style ="text-align: center">Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="flight,iterationStatus : *{pilotFlight}">
+						<td>
+							<input type="text" name="flightNumber" />
+						</td>
+						<td>
+							<input type="text" name="origin" />
+						</td>
+						<td>
+							<input type="text" name="destination" />
+						</td>
+						<td>
+							<input type="text" name="time" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit">Add Flight</button>
 	</form>
 	</div>
 </body>
